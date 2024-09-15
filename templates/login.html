@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <!--Get error message-->
+    <h3>{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {{ messages[0] }}
+        {% endif %}
+    {% endwith %}</h3>
+    <form action="/submit_login" method="POST">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username"><br>
+        
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password"><br>
+        <input type="submit" value="Login">
+        <p>Don't have an account? <a href="/signup">Sign up for an account now!</a></p>
+    </form>
+</body>
+</html>

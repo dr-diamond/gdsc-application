@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>GDSC Dev Team Recruitments</title>
+</head>
+<body class="bg-gray-100 text-sm">
+<div class="container mx-auto font-mono px-4 py-2 max-w-6xl">
+    <h1 class="text-2xl font-bold mb-2">GDSC SNIoE Dev Team Recruitments</h1>
+     <!--Get signup/login message-->
+    <h2>{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {{ messages[0] }}
+        {% endif %}
+    {% endwith %}</h2>
+    {% if username %}
+        <h2><a href="/logout">Log out</a></h2>
+    {% endif %}
+    {% if not username %}
+        <h2><a href="/signup">Sign up</a> | <a href="/login">Login</a></h2>
+    {% endif %}
+    <div class="bg-white shadow-sm rounded p-4">
+        <p class="mb-2">Welcome to the GDSC SNIoE Dev Team recruitment test! We're excited to have you here. This page contains everything you need to know about the task, so let's walk through it together:</p>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <ol class="list-decimal pl-4 space-y-2">
+                    <li>
+                        <strong>Style This Page</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>This page is your starting point. It’s pretty simple right now, but we want you to make it shine! Use TailwindCSS (or any other CSS you prefer, even plain CSS) to enhance the design, improve the layout, and give it your personal touch. Your goal is to make this page look polished and user-friendly. You can inspect this page and use the source code as your base.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Create the Input Box</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>You’ll notice there’s a placeholder here for an input box. Your job is to add that input box so users can submit their text. Style it, make sure it works smoothly, and ensure it looks good on all devices, whether it’s a phone, tablet, or desktop.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Build a Submission System</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>Next up, you’ll need to set up a system to save what users submit in the input box. You can use any backend technology or storage method you like (e.g., a database, file system). The important thing is that the data is saved and can be retrieved later. You’re free to choose the tools and methods that work best for you—there’s no right or wrong here, just show us your thought process!</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Display the Submissions</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>Once you’ve got submissions coming in, you’ll want to display them. This could be a simple list in html, or something more elaborate like an admin panel with filtering options. It’s up to you—just make sure it’s easy to use and displays all your stored data properly.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Go Live</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>When everything is working, it’s time to take your project live! Deploy this page to a hosting service and method of your choice, and make sure it’s accessible to anyone with the link. Some recommendations are Vercel, Netlify and Heroku. If your link is not up 24/7, that's not a problem. We just want to see how you deploy your project.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <div>
+                <ol class="list-decimal pl-4 space-y-2" start="6">
+                    <li>
+                        <strong>Add Some Documentation</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>We’d love to hear about how you approached this task. Write a brief README file that explains what you did, the tools you used, the problems you faced and how to run everything locally. Make sure to include the link to your deployed page, too.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Take Your Time, But Not Too Much!</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>You have 2 weeks (until 12:00 AM, 16th September 2024) to complete this task. We’re not looking for perfection, we’re interested in seeing how you approach problem-solving and design. Focus on doing your best within the time you have, and finish however much of this task you can! Even if you don’t finish the project, submit what you’ve got—we just wanna see how you approach problems. We’re evaluating your programming skills, thought process, and even how you research and learn along the way.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>How We'll Evaluate</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>Design & Usability: How good does this page look, and how easy is it to use?</li>
+                            <li>Functionality: Does everything work as expected?</li>
+                            <li>Code Quality: Is your code clean, organized, and easy to follow?</li>
+                            <li>Creativity: Did you add any unique or innovative features?</li>
+                            <li>Deployment: Is the page live and accessible via the link you provide?</li>
+                            <li>Your Approach: Did you clearly explain your approach in the README?</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>How to Submit</strong>:
+                        <ul class="list-disc pl-4 mt-1">
+                            <li>When you’re ready, push your code to a GitHub repository and share the link along with the URL of your live page. Make sure we can access everything so we can check out your work!</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <p class="mt-4">That's it! We're looking forward to seeing how you make this page your own. Have fun with the challenge, and good luck!</p>
+    </div>
+    <div class="mt-4 bg-white shadow-sm rounded p-4">
+        <h2 class="text-xl font-bold mb-2">Submit Your Task</h2>
+        <!-- Add your input box and submission form here -->
+        <div class="border-2 border-dashed border-gray-300 p-4 text-center text-gray-500">
+            Your input box goes here
+        </div>
+    </div>
+</div>
+</body>
+</html>
