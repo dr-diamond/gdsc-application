@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/favicon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!--<script src="https://cdn.tailwindcss.com"></script>-->
     <title>GDSC Dev Team Recruitments</title>
 </head>
 <body class="bg-gray-100 text-sm">
 <div class="container mx-auto font-mono px-4 py-2 max-w-6xl">
     <h1 class="text-2xl font-bold mb-2">GDSC SNIoE Dev Team Recruitments</h1>
-     <!--Get signup/login message-->
-    <h2>{% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {{ messages[0] }}
-        {% endif %}
-    {% endwith %}</h2>
     {% if username %}
         <h2><a href="/logout">Log out</a></h2>
     {% endif %}
@@ -99,9 +93,30 @@
         <h2 class="text-xl font-bold mb-2">Submit Your Task</h2>
         <!-- Add your input box and submission form here -->
         <div class="border-2 border-dashed border-gray-300 p-4 text-center text-gray-500">
-            Your input box goes here
+            {% if username %}
+            <form action="/comment_submit" method="POST">
+                <textarea oninput="enable()" type="text" id="comment" name="comment"></textarea><br>
+                <input disabled id="submit" type="submit" value="Post">
+            </form>
+            {% else %}
+            <p>Create an account to comment</p>
+            {% endif %}
         </div>
+        {% for comment in comments %}
+            <b>{{ comment.author }}</b>  <i>{{ comment.timestamp }}</i><br>
+            {{ comment.body }}<br><br>
+        {% endfor %}
     </div>
 </div>
+
+<script>
+    function enable() {
+        if(document.getElementById("comment").value == "") {
+            document.getElementById("submit").disabled = true;
+        } else {
+            document.getElementById("submit").disabled = false;
+        }
+    }
+</script>
 </body>
 </html>

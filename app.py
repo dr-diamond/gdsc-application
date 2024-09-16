@@ -1,7 +1,8 @@
-import os, hashlib
+import os, hashlib, json
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = os.getenv('APP_SECRET_KEY')
@@ -33,7 +34,13 @@ def index():
     #Check for messages signup/login success message
     success_message = request.args.get('message')
     username = session.get('username')
-    return render_template('index.html', username=username)
+
+    #Load comments
+    with open('instance/comments.json', 'r') as file:
+        data = json.load(file)   
+    comments = data.get('comments', [])
+    
+    return render_template('index.html', username=username, comments=comments)
 
 # Route to handle the signup submission
 @app.route('/submit_signup', methods=['POST'])
@@ -71,7 +78,6 @@ def submit_login():
         if user.password == hashed_password:
             # Store username in session
             session['username'] = user.username
-            flash(f"Welcome back, {user.username}!")
             return redirect(url_for('index'))
         else:
             flash('Incorrect password. Please try again.', 'error')
@@ -98,6 +104,26 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
+#Fetch comment
+@app.route('/comment_submit', methods=['POST'])
+def comment_submit():
+    # Capture form data
+    username = session["username"]
+    comment = request.form['comment']
+    timestamp = datetime.now().strftime('%H:%M:%S %d/%m/%Y')
+    comment_data = {
+        "author": username,
+        "body": comment,
+        "timestamp": timestamp
+    }
+    #Write comment to JSON file
+    with open('instance/comments.json', 'r') as comments_file:
+        comments_data = json.load(comments_file)
+        comments_data["comments"].append(comment_data)
+
+    with open('instance/comments.json', 'w') as comments_file:
+        json.dump(comments_data, comments_file, indent=4)
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
