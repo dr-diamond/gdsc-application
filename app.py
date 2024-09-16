@@ -119,7 +119,7 @@ def comment_submit():
     #Write comment to JSON file
     with open('instance/comments.json', 'r') as comments_file:
         comments_data = json.load(comments_file)
-        comments_data["comments"].append(comment_data)
+        comments_data["comments"].insert(0, comment_data)
 
     with open('instance/comments.json', 'w') as comments_file:
         json.dump(comments_data, comments_file, indent=4)

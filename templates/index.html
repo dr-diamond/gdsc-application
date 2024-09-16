@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/favicon.png">
     <!--<script src="https://cdn.tailwindcss.com"></script>-->
+    <link rel="stylesheet" href="/static/assets/homepage.css">
     <title>GDSC Dev Team Recruitments</title>
 </head>
 <body class="bg-gray-100 text-sm">
@@ -102,10 +103,12 @@
             <p>Create an account to comment</p>
             {% endif %}
         </div>
+        <ul>
         {% for comment in comments %}
-            <b>{{ comment.author }}</b>  <i>{{ comment.timestamp }}</i><br>
-            {{ comment.body }}<br><br>
+            <b>{{ comment.author }}</b>  <i>{{ comment.timestamp }}</i>
+            <li>{{ comment.body }}</li>
         {% endfor %}
+        </ul>
     </div>
 </div>
 
