@@ -1,10 +1,87 @@
+p {
+    text-align: center;
+}
 li {
     list-style: none;
 }
 body {
-    background: #151521;
+    background: #181827;
     color: #FFFFFF;
 }
 h1 {
     text-align: center;
+}
+ol {
+    margin: 0;
+    padding-left: 0;
+    font-family: monospace;
+}
+ol > li {
+    margin: 6% 5%;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 135%;
+
+}
+
+ol > li > strong {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #bcf8ff;
+    color: #151521;
+    width: calc(100% - 10%);
+    padding: 0.5%;
+    margin: 0 5%;
+    border-radius: 25px 25px 0 0;
+}
+
+ol ul {
+    margin: 0;
+    padding-left: 0;
+}
+ol ul > li {
+    text-align: center;
+    padding: 1.5%;
+    background: #0239af;
+    color: #cdfaff;
+    margin: 0 5%;
+    margin-top: 0;
+    border-radius: 0 0 25px 25px;
+}
+
+.header {
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: #2d2d7f;
+    font-size: 150%;
+    padding: 1%;
+    text-align: center;
+}
+
+span.buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+span.buttons a, #submit {
+    color: black;
+    background-color: skyblue;
+    text-decoration: none;
+    padding: 4px;
+    border-radius: 4px;
+    border-style: none;
+}
+span.buttons a.link:hover, #submit:hover {
+    color: white;
+    background-color: #0239af;
+}
+
+textarea {
+    width: 40%;
+    margin-left: 40px;
 }
